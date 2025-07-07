@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: orders_weekly_trend
+    description: "Динамика количества заказов в разрезе недель с расчетом изменений по сравнению с предыдущей неделей"
+    columns:
+      - name: week_start
+        description: "Начало недели (понедельник)"
+    
+      - name: order_count
+        description: "Количество заказов за неделю"
+      
+      - name: prev_week_count
+        description: "Количество заказов за предыдущую неделю"
+      
+      - name: week_over_week_change
+        description: "Абсолютное изменение количества заказов по сравнению с предыдущей неделей"
+      
+      - name: week_over_week_change_pct
+        description: "Процентное изменение количества заказов по сравнению с предыдущей неделей"
+
+  - name: customers_completed_orders
+    description: "Клиенты, отсортированные по количеству завершенных заказов (статус 'completed')"
+    columns:
+      - name: customer_id
+        description: "Идентификатор клиента (бизнес-ключ)"
+      - name: first_name
+        description: "Имя клиента"
+
+      - name: last_name
+        description: "Фамилия клиента"
+        tests:
+          - not_null
+      
+      - name: email
+        description: "Электронная почта клиента"
+      - name: completed_orders_count
+        description: "Количество завершенных заказов для данного клиента"
